@@ -50,8 +50,8 @@
           A JSON object holding data about all the movies <br />
           Example:
           <code>
-            [{ Title: "Don't Look up", Director: "Adam McKay", Genre: { Name:
-            "Science", Description: "blablalbalbal...",}, ]
+            [{ Title: "", Director: {Name: "",Bio: "", Birthdate: "", } "",
+            Genre: { Name: "", Description: "..",}, ]
           </code>
         </td>
       </tr>
@@ -70,7 +70,7 @@
       </tr> -->
       <tr>
         <td>Get data about a movie by title</td>
-        <td>/movies/:movieTitle</td>
+        <td>/movies/:title</td>
         <td>GET</td>
         <td>None</td>
         <td>
@@ -79,8 +79,9 @@
           Example:
           <br />
           <code>
-            [{Title: "Don't Look up", Director: "Adam McKay", Genre: { Name:
-            "Science", Description: "blablalbalbal...", }]
+            [{Title: "Don't Look up", Director: {Name: "Adam McKay",Bio: "Adam
+            McKay is an American...", Birthdate: "1967", Genre: { Name:
+            "Science-Fiction", Description: "blablalbalbal...", }]
           </code>
         </td>
         <br />
@@ -136,17 +137,21 @@
 
       <tr>
         <td>Allow registered users to update their info</td>
-        <td>/users/:userName</td>
+        <td>/users/:Username</td>
         <td>PUT</td>
         <td>
-          A JSON object holding data about the changed userName. <br />
-          Example: { name: "Mandela", }
+          A JSON object holding data about the user to be updated . <br />
+          Example: { Username: String, (required) Password: String, (required)
+          Email: String, (required) Birthday: Date }
         </td>
         <td>
           A JSON object holding updated data about the user,<br />
           structured like:
           <br />
-          <code> { name: "Mandela", favoriteMovies: [], id: "a12dhgd" }, </code>
+          <code>
+            { _id: "String", Username: "Mandela", Password:"23323"
+            favoriteMovies:[],},
+          </code>
         </td>
         <br />
       </tr>
@@ -163,22 +168,25 @@
         <td>
           Allow registered users to add a movie to their list of favorites
         </td>
-        <td>/users/userName/:movieTitle</td>
+        <td>/users/:Username/movies/:MovieID</td>
         <td>POST</td>
-        <td>Example: /users/Joe/Encanto</td>
-        <td>A text message: "movieTitle" has been added to favorites<br /></td>
+        <td>Example: /users/John%20Doe/movies/12323232</td>
+        <td>
+          A JSON object holding data about the updated user's favorite movie
+          list <br />
+        </td>
       </tr>
 
       <tr>
         <td>
           Allow registered users to delete a movie from their list of favorites
         </td>
-        <td>/users/:userName/:movieTitle</td>
+        <td>/users/:Username/FavoriteMovies/:MovieID</td>
         <td>DELETE</td>
         <td>None</td>
         <td>
-          A text message: "movieTitle" has been removed from [username]'s
-          favorite<br />
+          A JSON object holding data about the updated user's favorite movie
+          <br />
         </td>
       </tr>
 
@@ -187,9 +195,7 @@
         <td>/users/:userName</td>
         <td>DELETE</td>
         <td>None</td>
-        <td>
-          A text message: [userName]'s account was succesfully deleted<br />
-        </td>
+        <td>Null</td>
       </tr>
     </table>
     <br />
