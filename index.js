@@ -54,6 +54,13 @@ let auth = require("./auth")(app);
 const passport = require("passport");
 require("./passport");
 
+//Welcome page
+app.get("/", (req, res) => {
+  res
+    .status(200)
+    .send("Welcome to myFlixDB movie database! Have fun exploring the movies");
+});
+
 // GET request to get data about all available movies in the database
 app.get(
   "/movies",
