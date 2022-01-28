@@ -17,6 +17,10 @@ const { check, validationResult } = require("express-validator");
 //   useUnifiedTopology: true,
 // });
 
+// mongoose.connect("mongodb+srv://myClusteradmin:clusterAdimn22@mycluster.k4e0h.mongodb.net/myFlixDB?retryWrites=true&w=majority", {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 mongoose.connect(process.env.CONNECTION_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -33,7 +37,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 const cors = require("cors");
 //app.use(cors()); // this would set the application to allow requests from all origins
-let allowedOrigins = ["http://localhost:8080", "http://testsite.com"];
+let allowedOrigins = [
+  "http://localhost:8080",
+  "http://localhost:1234",
+  "http://testsite.com",
+  "https://myflix-movie-api.herokuapp.com/",
+];
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -193,7 +202,9 @@ app.post(
 app.put(
   "/users/:Username",
   [
-    check("Username", "Username is required").isLength({ min: 5 }),
+    check("Username", "Username is required(min.5 characters)").isLength({
+      min: 5,
+    }),
     check(
       "Username",
       "Username contains non alphanumeric characters - not allowed."
@@ -335,10 +346,10 @@ app.delete(
 app.use(express.static("public"));
 
 // error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Oopss..Something went wrong!");
-});
+// app.use((err, req, res, next) => {
+//   console.error(err.stack);
+//   res.status(500).send("Oopss..Something went wrong!");
+// });
 
 // Sets port to a pre-configured port number or a certain number in the environment variable
 
