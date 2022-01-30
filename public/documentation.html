@@ -136,6 +136,32 @@
       </tr>
 
       <tr>
+        <td>Allow new user to login</td>
+        <td>/users/login</td>
+        <td>POST</td>
+        <td>
+          A JSON object holding data about the user to login,<br />
+          structured like: <br />
+          { Username: "user2", Password: "452523455", Email:
+          "ghghgh@whatever.com" }
+        </td>
+        <td>
+          A JSON object holding data about the user with ID and token<br />
+          Example:
+          <br />
+          <code>
+            { "user": { "_id": "61f3c5efe1aa41dc1f9bc9ef", "Username": "user2",
+            "Password":
+            "$2b$10$LzD12sYfuJ5vp04j9uIWh.SzjbHarCTyJlXSw8cwXql725m2gR1Jm",
+            "Email": "xyzzzz@gmail.com", "Birthday": "2000-01-01T00:00:00.000Z",
+            "FavoriteMovies": [], "__v": 0 }, "token":
+            "...JhbGciOi1NiIsInRmFtZS.." }
+          </code>
+        </td>
+        <br />
+      </tr>
+
+      <tr>
         <td>Allow registered users to update their info</td>
         <td>/users/:Username</td>
         <td>PUT</td>
