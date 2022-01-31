@@ -7,6 +7,10 @@
     <title>DOCUMENTATION</title>
   </head>
   <style>
+    body {
+      padding: 10px;
+    }
+
     table {
       /* border: 1px solid red; */
       border-collapse: collapse;
@@ -23,206 +27,214 @@
       text-align: center;
       border-bottom: 1px solid black;
     }
+    a {
+      text-decoration-line: none;
+      background-color: rgb(235, 238, 241);
+    }
   </style>
   <body>
-    <h2>Intoduction</h2>
+    <h2>Movie API</h2>
     <p>
       This API provides users with information about different movies, director,
       and genres.Users will be able to sign up, update their personal
       information, and create a list of their favorite movies.
     </p>
+
+    <h3>Resource URL</h3>
+    <a href="https://github.com/YayehK/movie_api" target="_blank"
+      >https://github.com/YayehK/movie_api</a
+    >
     <h3>myFlix API References</h3>
 
-    <table>
-      <thead>
-        <th>REQUEST</th>
-        <th>URL</th>
-        <th>HTTP Method</th>
-        <th>Request body data format</th>
-        <th>Response body data format</th>
-      </thead>
-      <tr>
-        <td>Allow new user to login</td>
-        <td>/login</td>
-        <td>POST</td>
-        <td>
-          A JSON object holding data about the user to login,<br />
-          structured like: <br />
-          { Username: "user2", Password: "452523455", Email:
-          "ghghgh@whatever.com" }
-        </td>
-        <td>
-          A JSON object holding data about the user with ID and token<br />
-          Example:
+    <div>
+      <table>
+        <thead>
+          <th>REQUEST</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request body data format</th>
+          <th>Response body data format</th>
+        </thead>
+        <tr>
+          <td>Allow new user to login</td>
+          <td>/login</td>
+          <td>POST</td>
+          <td>
+            A JSON object holding data about the user to login,<br />
+            structured like: <br />
+            { Username: "user2", Password: "452523455", Email:
+            "ghghgh@whatever.com" }
+          </td>
+          <td>
+            A JSON object holding data about the user with ID and token<br />
+            Example:
+            <br />
+            <code>
+              { "user": { "_id": "61f3c5efe1aa41dc1f9bc9ef", "Username":
+              "user2", "Password":
+              "$2b$10$LzD12sYfuJ5vp04j9uIWh.SzjbHarCTyJlXSw8cwXql725m2gR1Jm",
+              "Email": "xyzzzz@gmail.com", "Birthday":
+              "2000-01-01T00:00:00.000Z", "FavoriteMovies": [], "__v": 0 },
+              "token": "...JhbGciOi1NiIsInRmFtZS.." }
+            </code>
+          </td>
           <br />
-          <code>
-            { "user": { "_id": "61f3c5efe1aa41dc1f9bc9ef", "Username": "user2",
-            "Password":
-            "$2b$10$LzD12sYfuJ5vp04j9uIWh.SzjbHarCTyJlXSw8cwXql725m2gR1Jm",
-            "Email": "xyzzzz@gmail.com", "Birthday": "2000-01-01T00:00:00.000Z",
-            "FavoriteMovies": [], "__v": 0 }, "token":
-            "...JhbGciOi1NiIsInRmFtZS.." }
-          </code>
-        </td>
-        <br />
-      </tr>
-      <tr>
-        <td>Get a list of available movies</td>
-        <td>/movies</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>
-          A JSON object holding data about all the movies <br />
-          Example:
-          <code>
-            [{ Title: "", Director: {Name: "",Bio: "", Birthdate: "", } "",
-            Genre: { Name: "", Description: "..",}, ]
-          </code>
-        </td>
-      </tr>
-      <!-- <tr>
-        <td>Add a movie</td>
-        <td>/movies</td>
-        <td>POST</td>
-        <td>
-          A JSON object holding data about the movie to add, structured like:
-          {title: 'Don\'t Look Up',Genre: 'Drama', Director: John Doe}
-        </td>
-        <td>
-          A JSON object holding data about the movie that was added, including
-          movieTitle and user ID.
-        </td>
-      </tr> -->
-      <tr>
-        <td>Get data about a movie by title</td>
-        <td>/movies/:title</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>
-          A JSON object holding data about a single movie by title. Description,
-          genre, director image URL, whether its featured or not, <br />
-          Example:
+        </tr>
+        <tr>
+          <td>Get a list of available movies</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about all the movies <br />
+            Example:
+            <code>
+              [{ Title: "", Director: {Name: "",Bio: "", Birthdate: "", } "",
+              Genre: { Name: "", Description: "..",}, ]
+            </code>
+          </td>
+        </tr>
+        <!-- <tr>
+          <td>Add a movie</td>
+          <td>/movies</td>
+          <td>POST</td>
+          <td>
+            A JSON object holding data about the movie to add, structured like:
+            {title: 'Don\'t Look Up',Genre: 'Drama', Director: John Doe}
+          </td>
+          <td>
+            A JSON object holding data about the movie that was added, including
+            movieTitle and user ID.
+          </td>
+        </tr> -->
+        <tr>
+          <td>Get data about a movie by title</td>
+          <td>/movies/:title</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about a single movie by title.
+            Description, genre, director image URL, whether its featured or not,
+            <br />
+            Example:
+            <br />
+            <code>
+              [{Title: "Don't Look up", Director: {Name: "Adam McKay",Bio: "Adam
+              McKay is an American...", Birthdate: "1967", Genre: { Name:
+              "Science-Fiction", Description: "blablalbalbal...", }]
+            </code>
+          </td>
           <br />
-          <code>
-            [{Title: "Don't Look up", Director: {Name: "Adam McKay",Bio: "Adam
-            McKay is an American...", Birthdate: "1967", Genre: { Name:
-            "Science-Fiction", Description: "blablalbalbal...", }]
-          </code>
-        </td>
-        <br />
-      </tr>
-
-      <tr>
-        <td>Get data about genre</td>
-        <td>/movies/genre/:genreName</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>
-          A JSON object holding data about genre (name, description)<br />
-          Example:
+        </tr>
+        <tr>
+          <td>Get data about genre</td>
+          <td>/movies/genre/:genreName</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about genre (name, description)<br />
+            Example:
+            <br />
+            <code> { Name: "Drama", Description: " blablabal"} </code>
+          </td>
           <br />
-          <code> { Name: "Drama", Description: " blablabal"} </code>
-        </td>
-        <br />
-      </tr>
-
-      <tr>
-        <td>Get data about director by name</td>
-        <td>/movies/director/:directorName</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>
-          A JSON object holding data about director,<br />
-          Example:
+        </tr>
+        <tr>
+          <td>Get data about director by name</td>
+          <td>/movies/director/:directorName</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about director,<br />
+            Example:
+            <br />
+            <code>
+              { Name: "John Doe", bio: "blablabal", birth: "1900", death:
+              "2021"}
+            </code>
+          </td>
           <br />
-          <code>
-            { Name: "John Doe", bio: "blablabal", birth: "1900", death: "2021"}
-          </code>
-        </td>
-        <br />
-      </tr>
-
-      <tr>
-        <td>Allow new user to register</td>
-        <td>/users</td>
-        <td>POST</td>
-        <td>
-          A JSON object holding data about the user to register,<br />
-          structured like: <br />
-          { name: "Kim", favoriteMovies: [] }
-        </td>
-        <td>
-          A JSON object holding data about registered user with ID,<br />
-          Example:
+        </tr>
+        <tr>
+          <td>Allow new user to register</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>
+            A JSON object holding data about the user to register,<br />
+            structured like: <br />
+            { name: "Kim", favoriteMovies: [] }
+          </td>
+          <td>
+            A JSON object holding data about registered user with ID,<br />
+            Example:
+            <br />
+            <code>
+              { name: "Mandela", favoriteMovies: [], id: "a12dhgd" }
+            </code>
+          </td>
           <br />
-          <code> { name: "Mandela", favoriteMovies: [], id: "a12dhgd" } </code>
-        </td>
-        <br />
-      </tr>
-
-      <tr>
-        <td>Allow registered users to update their info</td>
-        <td>/users/:Username</td>
-        <td>PUT</td>
-        <td>
-          A JSON object holding data about the user to be updated . <br />
-          Example: { Username: String, (required) Password: String, (required)
-          Email: String, (required) Birthday: Date }
-        </td>
-        <td>
-          A JSON object holding updated data about the user,<br />
-          structured like:
+        </tr>
+        <tr>
+          <td>Allow registered users to update their info</td>
+          <td>/users/:Username</td>
+          <td>PUT</td>
+          <td>
+            A JSON object holding data about the user to be updated . <br />
+            Example: { Username: String, (required) Password: String, (required)
+            Email: String, (required) Birthday: Date }
+          </td>
+          <td>
+            A JSON object holding updated data about the user,<br />
+            structured like:
+            <br />
+            <code>
+              { _id: "String", Username: "Mandela", Password:"23323"
+              favoriteMovies:[],},
+            </code>
+          </td>
           <br />
-          <code>
-            { _id: "String", Username: "Mandela", Password:"23323"
-            favoriteMovies:[],},
-          </code>
-        </td>
-        <br />
-      </tr>
-
-      <tr>
-        <td>Get data about a registered user by userName</td>
-        <td>/users/:userName</td>
-        <td>GET</td>
-        <td>Example: users/John%20Doe</td>
-        <td>A JSON object holding data about registered user<br /></td>
-      </tr>
-
-      <tr>
-        <td>
-          Allow registered users to add a movie to their list of favorites
-        </td>
-        <td>/users/:Username/movies/:MovieID</td>
-        <td>POST</td>
-        <td>Example: /users/John%20Doe/movies/12323232</td>
-        <td>
-          A JSON object holding data about the updated user's favorite movie
-          list <br />
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          Allow registered users to delete a movie from their list of favorites
-        </td>
-        <td>/users/:Username/FavoriteMovies/:MovieID</td>
-        <td>DELETE</td>
-        <td>None</td>
-        <td>
-          A JSON object holding data about the updated user's favorite movie
-          <br />
-        </td>
-      </tr>
-
-      <tr>
-        <td>Allow existing users to deregister</td>
-        <td>/users/:userName</td>
-        <td>DELETE</td>
-        <td>None</td>
-        <td>Null</td>
-      </tr>
-    </table>
+        </tr>
+        <tr>
+          <td>Get data about a registered user by userName</td>
+          <td>/users/:userName</td>
+          <td>GET</td>
+          <td>Example: users/John%20Doe</td>
+          <td>A JSON object holding data about registered user<br /></td>
+        </tr>
+        <tr>
+          <td>
+            Allow registered users to add a movie to their list of favorites
+          </td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td>POST</td>
+          <td>Example: /users/John%20Doe/movies/12323232</td>
+          <td>
+            A JSON object holding data about the updated user's favorite movie
+            list <br />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Allow registered users to delete a movie from their list of
+            favorites
+          </td>
+          <td>/users/:Username/FavoriteMovies/:MovieID</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>
+            A JSON object holding data about the updated user's favorite movie
+            <br />
+          </td>
+        </tr>
+        <tr>
+          <td>Allow existing users to deregister</td>
+          <td>/users/:userName</td>
+          <td>DELETE</td>
+          <td>None</td>
+          <td>Null</td>
+        </tr>
+      </table>
+    </div>
     <br />
   </body>
 </html>
