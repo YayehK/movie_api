@@ -27,8 +27,8 @@ The API can be accessed using standard HTTP methods such as GET and POST. To acc
 
 Full documentation is available at the link provided below.
 
-[link](https://myflix-movie-api.herokuapp.com/documentation.html)
+[Documentation](https://myflix-movie-api.herokuapp.com/documentation.html)
 
 Deployed link
 
-[link](https://myflix-movie-api.herokuapp.com)
+[myFlixDB API on Heroku](https://myflix-movie-api.herokuapp.com)
