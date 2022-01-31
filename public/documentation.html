@@ -42,6 +42,31 @@
         <th>Response body data format</th>
       </thead>
       <tr>
+        <td>Allow new user to login</td>
+        <td>/login</td>
+        <td>POST</td>
+        <td>
+          A JSON object holding data about the user to login,<br />
+          structured like: <br />
+          { Username: "user2", Password: "452523455", Email:
+          "ghghgh@whatever.com" }
+        </td>
+        <td>
+          A JSON object holding data about the user with ID and token<br />
+          Example:
+          <br />
+          <code>
+            { "user": { "_id": "61f3c5efe1aa41dc1f9bc9ef", "Username": "user2",
+            "Password":
+            "$2b$10$LzD12sYfuJ5vp04j9uIWh.SzjbHarCTyJlXSw8cwXql725m2gR1Jm",
+            "Email": "xyzzzz@gmail.com", "Birthday": "2000-01-01T00:00:00.000Z",
+            "FavoriteMovies": [], "__v": 0 }, "token":
+            "...JhbGciOi1NiIsInRmFtZS.." }
+          </code>
+        </td>
+        <br />
+      </tr>
+      <tr>
         <td>Get a list of available movies</td>
         <td>/movies</td>
         <td>GET</td>
@@ -131,32 +156,6 @@
           Example:
           <br />
           <code> { name: "Mandela", favoriteMovies: [], id: "a12dhgd" } </code>
-        </td>
-        <br />
-      </tr>
-
-      <tr>
-        <td>Allow new user to login</td>
-        <td>/users/login</td>
-        <td>POST</td>
-        <td>
-          A JSON object holding data about the user to login,<br />
-          structured like: <br />
-          { Username: "user2", Password: "452523455", Email:
-          "ghghgh@whatever.com" }
-        </td>
-        <td>
-          A JSON object holding data about the user with ID and token<br />
-          Example:
-          <br />
-          <code>
-            { "user": { "_id": "61f3c5efe1aa41dc1f9bc9ef", "Username": "user2",
-            "Password":
-            "$2b$10$LzD12sYfuJ5vp04j9uIWh.SzjbHarCTyJlXSw8cwXql725m2gR1Jm",
-            "Email": "xyzzzz@gmail.com", "Birthday": "2000-01-01T00:00:00.000Z",
-            "FavoriteMovies": [], "__v": 0 }, "token":
-            "...JhbGciOi1NiIsInRmFtZS.." }
-          </code>
         </td>
         <br />
       </tr>
