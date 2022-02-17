@@ -22,6 +22,7 @@ The API can be accessed using standard HTTP methods such as GET and POST. To acc
 - HTML/CSS
 - Postman
 - Heroku
+- Ora
 
 # Documentation
 
@@ -31,4 +32,4 @@ Full documentation is available at the link provided below.
 
 Deployed link
 
-[myFlixDB API on Heroku](https://myflix-movie-api.herokuapp.com)
+[myFlix API on Heroku](https://myflix-movie-api.herokuapp.com)
