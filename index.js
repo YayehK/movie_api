@@ -38,8 +38,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require("cors");
 //app.use(cors()); // this would set the application to allow requests from all origins
 let allowedOrigins = [
-  "http://localhost:8080",
-  "http://localhost:1234",
   "http://testsite.com",
   "https://myflix-movie-api.herokuapp.com/",
 ];
@@ -71,20 +69,30 @@ app.get("/", (req, res) => {
 });
 
 // GET request to get data about all available movies in the database
-app.get(
-  "/movies",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-    Movies.find()
-      .then((movies) => {
-        res.status(200).json(movies);
-      })
-      .catch((err) => {
-        console.error(err);
-        res.status(500).send("Error: " + err);
-      });
-  }
-);
+app.get("/movies", function (req, res) {
+  Movies.find()
+    .then(function (movies) {
+      res.status(201).json(movies);
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
+});
+// restore followingthe authentication middleware once you’ve given users the ability to authenticate themselves with a login form
+
+//   passport.authenticate("jwt", { session: false }),
+//   (req, res) => {
+//     Movies.find()
+//       .then((movies) => {
+//         res.status(200).json(movies);
+//       })
+//       .catch((err) => {
+//         console.error(err);
+//         res.status(500).send("Error: " + err);
+//       });
+//   }
+// );
 
 // GET request to get a data about a movie by movieTitle
 app.get(
