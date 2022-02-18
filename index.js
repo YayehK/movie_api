@@ -40,6 +40,7 @@ const cors = require("cors");
 let allowedOrigins = [
   "http://testsite.com",
   "https://myflix-movie-api.herokuapp.com/",
+  "http://localhost:1234",
 ];
 app.use(
   cors({
